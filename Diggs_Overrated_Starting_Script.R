@@ -68,3 +68,10 @@ write.csv(brown_stats, file = "brown_stats.csv")
 ## Look at Stefon compared to his 2023 WR Room
 bills_df = read.csv("C:/Users/miles/OneDrive/Desktop/401 Project/Bills_wrs.csv")
 bills_df
+
+stef = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Stefon_Diggs", flatten = TRUE)
+stef
+brown = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=AJ_Brown", flatten = TRUE)
+brown
+dell = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Tank_Dell", flatten = TRUE)
+dell
