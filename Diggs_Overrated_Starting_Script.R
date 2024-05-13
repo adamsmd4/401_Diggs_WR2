@@ -73,9 +73,42 @@ stef = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplaye
 stef
 collins = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Nico_Collins", flatten = TRUE)
 collins
-dell = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Tank_Dell", flatten = TRUE)
-dell
 woods = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Robert_Woods", flatten = TRUE)
 woods
 brown = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Noah_Brown", flatten = TRUE)
 brown
+
+                              stefdf = as.data.frame(stef[1])
+stefdfclean <- stefdf |> 
+  dplyr::select(player.strPlayer, player.dateBorn, player.strHeight, player.strWeight)
+
+collinsdf = as.data.frame(collins[1])
+collinsdfclean <- collinsdf |> 
+  dplyr::select(player.strPlayer, player.dateBorn, player.strHeight, player.strWeight)
+
+woodsdf = as.data.frame(woods[1])
+woodsdfclean <- woodsdf |> 
+  dplyr::select(player.strPlayer, player.dateBorn, player.strHeight, player.strWeight)
+
+browndf = as.data.frame(brown[1])
+browndfclean <- browndf |> 
+  dplyr::select(player.strPlayer, player.dateBorn, player.strHeight, player.strWeight)
+
+
+fourplayers <- rbind(stefdfclean, woodsdfclean, collinsdfclean, browndfclean)
+
+fourplayers$player.strHeight <- sub(" \\(.*\\)", "", fourplayers$player.strHeight)
+
+fourplayers$player.strWeight <- sub(" \\(.*\\)", "", fourplayers$player.strWeight)
+
+
+fourplayers$player.dateBorn <- as.Date(fourplayers$player.dateBorn)
+
+library(lubridate)
+# Calculate age using lubridate
+fourplayers$Age <- interval(start = fourplayers$player.dateBorn, end = Sys.Date()) / years(1)
+fourplayers$Age <- floor(fourplayers$Age)
+
+fourplayers <- subset(fourplayers, select = -player.dateBorn)
+
+colnames(fourplayers) <- c("Name", "Height", "Weight", "Age")
