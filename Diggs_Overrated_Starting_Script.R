@@ -71,7 +71,7 @@ bills_df
 
 stef = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Stefon_Diggs", flatten = TRUE)
 stef
-brown = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=AJ_Brown", flatten = TRUE)
-brown
+collins = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Nico_Collins", flatten = TRUE)
+collins
 dell = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Tank_Dell", flatten = TRUE)
 dell
