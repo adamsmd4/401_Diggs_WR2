@@ -75,3 +75,7 @@ collins = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchpl
 collins
 dell = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Tank_Dell", flatten = TRUE)
 dell
+woods = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Robert_Woods", flatten = TRUE)
+woods
+brown = jsonlite::fromJSON("https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=Noah_Brown", flatten = TRUE)
+brown
